@@ -13,6 +13,22 @@
 <p align="center">
 AgriSakha AI is a voice-first prototype that helps farmers access agricultural advice, credit scoring, and soil analysis — all in Hindi. Designed to work on basic feature phones without requiring smartphones or digital literacy.
 </p>
+
+---
+
+<div align="center">
+<a href="https://youtu.be/JDgf-lbbPu4?si=FcFhQs391B-dvO97" target="_blank">
+  <img src="https://img.shields.io/badge/Watch%20Demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
+</a>
+
+<a href="https://drive.google.com/file/d/1ByQYEwJ2962N_bExHeHKhxudbsrRNJ1Z/view?usp=sharing" target="_blank">
+  <img src="https://img.shields.io/badge/Download-Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white"/>
+</a>
+  
+</div>
+
+---
+
 <p align="center">
   <img src="https://github.com/ankush850/AgriSakha/blob/ae4d1609c7403545a647f10b5ef6d8136e2a5edb/ARC.png">
 </p>
