@@ -27,8 +27,6 @@ AgriSakha AI is a voice-first prototype that helps farmers access agricultural a
   
 </div>
 
----
-
 <p align="center">
   <img src="https://github.com/ankush850/AgriSakha/blob/ae4d1609c7403545a647f10b5ef6d8136e2a5edb/ARC.png">
 </p>
