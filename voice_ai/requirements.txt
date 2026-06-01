@@ -1,0 +1,6 @@
+# Voice-specific dependencies
+TTS==0.11.1
+vosk==0.3.45
+sounddevice==0.4.6
+pydub==0.25.1
+librosa==0.9.2
