@@ -1,0 +1,61 @@
+{
+    "voice_queries": [
+      {
+        "hindi": "मेरी फसल में कीड़े लग गए हैं",
+        "english": "My crop has pests",
+        "expected_response": {
+          "hindi": "नीम तेल 5 मिली प्रति लीटर पानी में मिलाएं। 3 दिन के अंतराल पर छिड़काव करें।",
+          "english": "Use neem oil at 5ml per liter. Spray at 3-day intervals."
+        }
+      },
+      {
+        "hindi": "गेहूं के लिए कितना यूरिया डालें?",
+        "english": "How much urea for wheat?",
+        "expected_response": {
+          "hindi": "गेहूं के लिए 50 किलो यूरिया प्रति एकड़। मिट्टी जाँच के बाद सही मात्रा बताई जाएगी।",
+          "english": "50kg urea per acre for wheat. Exact quantity will be advised after soil test."
+        }
+      },
+      {
+        "hindi": "मेरा क्रेडिट स्कोर क्या है?",
+        "english": "What is my credit score?",
+        "expected_response": {
+          "hindi": "आपका क्रेडिट स्कोर 720 है। आप ₹1,00,000 तक के कर्ज के पात्र हैं।",
+          "english": "Your credit score is 720. You're eligible for loans up to ₹1,00,000."
+        }
+      },
+      {
+        "hindi": "आज बाजार में टमाटर की कीमत क्या है?",
+        "english": "What is tomato's market price today?",
+        "expected_response": {
+          "hindi": "आज टमाटर का भाव ₹40/किलो (मंडी भोपाल)।",
+          "english": "Today's tomato price: ₹40/kg (Bhopal Mandi)."
+        }
+      },
+      {
+        "hindi": "मिट्टी की जांच कैसे करें?",
+        "english": "How to test soil?",
+        "expected_response": {
+          "hindi": "1. 15 सेंटीमीटर गहराई से मिट्टी का नमूना लें। 2. नजदीकी कृषि केंद्र पर जमा करें।",
+          "english": "1. Take soil sample from 15cm depth. 2. Submit at nearest agriculture center."
+        }
+      }
+    ],
+    "ussd_commands": [
+      {
+        "input": "*123*1#",
+        "description": "Pest control menu",
+        "expected_response": "कीटनाशक विकल्प: 1. नीम तेल 2. रासायनिक"
+      },
+      {
+        "input": "*123*2#",
+        "description": "Loan eligibility check",
+        "expected_response": "कर्ज पात्रता: 1. चेक करें 2. आवेदन"
+      }
+    ],
+    "test_notes": [
+      "All Hindi queries use Devanagari script",
+      "Responses match Krishi Vigyan Kendra guidelines",
+      "USSD codes follow NIC's *123# agricultural standard"
+    ]
+  }

@@ -1,0 +1,10 @@
+[
+  {
+    "farmer_id": "UP123",
+    "nitrogen": 35.2,
+    "phosphorus": 20.5,
+    "potassium": 42.1,
+    "ph": 6.8,
+    "location": [26.8467, 80.9462]
+  }
+]
