@@ -1,191 +1,188 @@
 # AgriSakha AI - Voice-First Farmer Assistance System 🌾
 
 <p align="center">
-  <a href="https://github.com/Ayushkr-ittm/AgriSakha_Prototype/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://github.com/ankush850/AgriSakha/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="Contributions Welcome">
-  <img src="https://img.shields.io/badge/blockchain-Hyperledger-brightgreen" alt="Blockchain: Hyperledger">
-  <img src="https://img.shields.io/badge/satellite-ISRO%2520Bhuvan-orange" alt="Satellite: ISRO Bhuvan">
+  <img src="https://img.shields.io/badge/streamlit-app-red.svg" alt="Streamlit">
+  <img src="https://img.shields.io/badge/blockchain-custom%20SHA256-brightgreen" alt="Blockchain">
+  <img src="https://img.shields.io/badge/ASR-Vosk%20Hindi-orange" alt="Vosk Hindi ASR">
 </p>
 
-<h3 align="center">🌟 Transforming Agriculture for India's 120 Million Smallholder Farmers 🌟</h3>
+<h3 align="center">🌟 Transforming Agriculture for India's Smallholder Farmers 🌟</h3>
 
 <p align="center">
-AgriSakha AI is a revolutionary voice-first ecosystem that democratizes access to financial services, agricultural knowledge, and fair markets through basic feature phones. Our innovative solution bridges the digital divide by functioning on any mobile device without requiring smartphones, internet connectivity, or digital literacy.
+AgriSakha AI is a voice-first prototype that helps farmers access agricultural advice, credit scoring, and soil analysis — all in Hindi. Designed to work on basic feature phones without requiring smartphones or digital literacy.
 </p>
 
-
-
 ---
 
-## ✨ Key Innovations
+## ✨ What's Built (Current Prototype)
 
-🗣️ **Voice-First Financial Inclusion**
-* **Zero-Literacy Interface:** Voice AI supporting 12+ Indian languages and dialects.
-* **Community Trust Algorithm:** Patented technology combining satellite data, transaction history, and peer validation.
-* **Blockchain-Powered Credit:** Transparent, tamper-proof financial identity for unbanked farmers.
+### 🗣️ Voice AI Module (`voice_ai/`)
+- **Hindi Speech Recognition** using [Vosk ASR](https://alphacephei.com/vosk/) (`vosk-model-small-hi-0.22`)
+- **Hindi Text-to-Speech** using [Coqui TTS](https://github.com/coqui-ai/TTS) (`tts_models/hi/indic-tts`)
+- Handles common farmer queries: pest control, loans, soil testing
+- Responds in Hindi via keyword matching with actionable advice
+- USSD-style menu: `1.कर्ज 2.कीट 3.मिट्टी`
 
-📡 **Satellite-Enabled Advisory**
-* **ISRO Bhuvan Integration:** Real-time crop health monitoring and analysis.
-* **Hyperlocal Recommendations:** Location-specific, crop-aware advisory services.
-* **Offline-Capable System:** Raspberry Pi edge computing for low-connectivity areas.
+### 💳 Credit Scoring Module (`credit_scoring/`)
+- **`engine.py`** — Satellite-data-weighted credit scoring engine
+  - Factors: Crop health (60%), Soil moisture (20%), Acreage (20%)
+  - Mocks ISRO Bhuvan satellite API for field data
+  - Returns score + Hindi voice response (e.g., `"क्रेडिट स्कोर: 78"`)
+- **`blockchain.py`** — Custom SHA-256 blockchain for tamper-proof credit records
+  - Genesis block initialization, block addition, and chain validation
+  - Each credit score event is stored as an immutable on-chain record
 
-🤝 **Decentralized Marketplace**
-* **Voice Commerce Protocol:** AI-negotiated direct farmer-to-buyer transactions.
-* **Transparent Pricing:** Real-time mandi prices and a dynamic bidding system.
-* **Middleman Elimination:** 30%+ income increase for farmers through direct negotiations.
+### 🌱 Soil Analysis Module (`edge_computing/`)
+- **`soil.py`** — Soil parameter analysis engine
+  - Inputs: Nitrogen, Phosphorus, Potassium, pH, Organic Carbon
+  - Weighted model calculates fertilizer recommendation score
+  - Generates Hindi report with nutrient status (कम / सामान्य / अधिक)
+  - Recommends Urea dosage in kg/acre
 
----
-
-## 📊 Quantified Impact
-
-| Challenge                   | Our Solution              | Improvement         |
-| --------------------------- | ------------------------- | ------------------- |
-| **Credit Access Rejections** | Alternative Scoring       | **65% Reduction** |
-| **Middlemen Exploitation** | Direct Negotiations       | **30%+ Income Increase** |
-| **Crop Losses** | Precision Advisories      | **50% Waste Reduction** |
-| **Input Costs** | Localized Recommendations | **40% Expense Reduction** |
-
----
-
-## 🛠️ Technology Stack
-
-* 🤖 **Core AI/ML**:
-    * **IndicTrans (AI4Bharat):** Multilingual NLP for 12+ Indian dialects.
-    * **TensorFlow Lite:** On-device yield prediction models.
-    * **Dalex.ai:** Bias auditing for caste/gender fairness.
-* 🎙️ **Voice Processing**:
-    * **Mozilla TTS:** Vernacular speech synthesis.
-    * **IndicWhisper:** Fine-tuned Whisper model for accent-tolerant ASR.
-    * **Vosk ASR:** Lightweight speech recognition for edge devices.
-* ⛓️ **Blockchain & Data**:
-    * **Hyperledger Fabric:** Private blockchain for credit scoring.
-    * **Apache Kafka:** Real-time SMS/voice data pipelines.
-    * **ISRO Bhuvan API:** Satellite imagery analysis.
-* 📱 **Edge Computing**:
-    * **Raspberry Pi OS:** Local hub for offline synchronization.
-    * **Custom IoT Sensors:** ₹500 soil health monitoring devices.
-    * **TensorFlow.js:** Pest image classification on basic phones.
-
----
-
-## 🏗️ System Architecture
-
-Our system uses a three-tier hybrid deployment model to ensure functionality even in low-connectivity environments.
-
-| Layer       | Location      | Technology          | Functionality                                   |
-| ----------- | ------------- | ------------------- | ----------------------------------------------- |
-| **On-Device** | Farmer's Field  | ₹500 IoT Sensors    | Basic soil metrics, offline voice recording     |
-| **Edge** | FPO Offices   | Raspberry Pi 4      | Voice processing, 7-day data caching            |
-| **Cloud** | Govt. Cloud   | AWS Lambda          | Satellite analytics, blockchain validation      |
+### 🌐 Streamlit Web App (`streamlit_app.py`)
+- Interactive UI to input soil parameters and generate instant Hindi reports
+- Run locally to demo the soil analysis pipeline
+- Outputs Hindi fertilizer recommendations and numeric recommendation score
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-AgriSakha-Prototype/
-├── voice_ai/                 # Voice interaction system
-│   ├── core.py               # Main voice processing logic
-│   ├── requirements.txt      # Python dependencies
-│   └── models/               # ASR/TTS models
-├── credit_scoring/           # Financial services module
-│   ├── engine.py             # Credit scoring algorithms
-│   └── blockchain.py         # Hyperledger Fabric integration
-├── edge_computing/           # Field data processing
-│   ├── soil.py               # Soil analysis algorithms
-│   └── requirements.txt      # Edge computing dependencies
-├── data/                     # Storage for datasets
-├── docs/                     # Documentation
-│   ├── ARCHITECTURE.md       # System architecture details
-│   ├── INSTALL.md            # Setup and installation guide
-│   └── DEMO.md               # Demonstration scenarios
-└── tests/                    # Test suites
-    ├── test_voice_ai.py      # Voice AI tests
-    └── test_credit_scoring.py # Credit scoring tests
+AgriSakha/
+├── streamlit_app.py          # Streamlit web UI for soil analysis
+├── config.py                 # Central config (TTS model, ASR model, thresholds)
+├── voice_ai/
+│   ├── core.py               # VoiceProcessor: record → transcribe → respond → speak
+│   └── requirements.txt      # TTS, Vosk, sounddevice, pydub, librosa
+├── credit_scoring/
+│   ├── engine.py             # CreditEngine: satellite-based scoring + blockchain storage
+│   └── blockchain.py         # AgriBlockchain: SHA-256 chain with validation
+├── edge_computing/
+│   ├── soil.py               # SoilAnalyzer: NPK/pH analysis + Hindi report generation
+│   └── requirements.txt      # numpy, etc.
+├── data/
+│   ├── sample_queries.json   # Hindi/English test queries + USSD commands
+│   ├── soil_samples.json     # Sample soil data for testing
+│   ├── NFHS_5_Factsheets_Data.xls
+│   └── RS_Session_246_AU1132_1.1.csv
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── INSTALL.md
+│   └── DEMO.md
+└── tests/
+    ├── test_voice_ai.py
+    └── test_credit_scoring.py
 ```
+
+---
+
+## 🛠️ Technology Stack
+
+| Component         | Technology                          |
+|-------------------|-------------------------------------|
+| **ASR (Speech→Text)** | Vosk `vosk-model-small-hi-0.22` |
+| **TTS (Text→Speech)** | Coqui TTS `tts_models/hi/indic-tts` |
+| **Soil Analysis** | NumPy weighted model                |
+| **Credit Scoring**| Custom satellite-weight algorithm   |
+| **Blockchain**    | Custom SHA-256 chain (Python)       |
+| **Web UI**        | Streamlit                           |
+| **Audio**         | sounddevice, pydub, librosa         |
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-* Python 3.8+
-* Raspberry Pi 4 (for edge deployment)
-* Basic understanding of IoT devices
+- Python 3.8+
 
-### Installation
+### 1. Clone the repository
+```bash
+git clone https://github.com/ankush850/AgriSakha.git
+cd AgriSakha
+```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/ankush850/AgriSakha.git](https://github.com/ankush850/AgriSakha.git)
-    cd AgriSakha
-    ```
+### 2. Install Voice AI dependencies
+```bash
+cd voice_ai
+pip install -r requirements.txt
+```
 
-2.  **Set up the voice AI module:**
-    ```bash
-    cd voice_ai
-    pip install -r requirements.txt
-    ```
+### 3. Run the Streamlit Soil Analysis App
+```bash
+cd ..
+pip install streamlit numpy
+streamlit run streamlit_app.py
+```
 
-3.  **Configure environment variables:**
-    ```bash
-    cp config.example.py config.py
+### 4. Run Credit Scoring Engine
+```bash
+python credit_scoring/engine.py
+```
 
-    ```
+### 5. Run Voice Processor (requires microphone)
+```bash
+python voice_ai/core.py
+```
 
-4.  **Run basic tests:**
-    ```bash
-    python -m pytest tests/test_voice_ai.py
-    ```
+### 6. Run Tests
+```bash
+python -m pytest tests/
+```
 
-For detailed installation instructions, see `docs/INSTALL.md`.
-
----
-
-## 🎯 Demonstration Scenarios
-
-🌱 **Voice-Based Advisory**
-1.  Farmer calls the system in a local dialect: *"मेरी फसल में पत्ते पीले पड़ रहे हैं"*
-2.  The system analyzes the query using **IndicWhisper ASR**.
-3.  AI provides a localized remedy: *"नीम का तेल 5ml प्रति लीटर पानी में मिलाकर छिड़काव करें"*
-
-💳 **Credit Scoring**
-1.  The system analyzes satellite data of the farmer's field via ISRO Bhuvan.
-2.  It checks UPI transaction history from mandi sales.
-3.  Generates a blockchain-based credit score with a voice explanation.
-
-🤝 **Voice Commerce**
-1.  A buyer submits a voice bid: *"100kg tomatoes @₹45 today"*
-2.  AI matches the bid with farmer collectives based on proximity and yield data.
-3.  The transaction is recorded on the blockchain for complete transparency.
+For detailed setup, see [`docs/INSTALL.md`](docs/INSTALL.md).
 
 ---
 
-## 🌍 Deployment Roadmap
+## 🎯 Sample Queries (from `data/sample_queries.json`)
 
-| Phase                       | Timeline    | Key Milestones                                     |
-| --------------------------- | ----------- | -------------------------------------------------- |
-| **Phase 1: Pilot** | 0-6 months  | ✅ 5,000 farmers in Uttar Pradesh <br> ✅ PM-KISAN database integration <br> ✅ 10 FPO edge node deployments |
-| **Phase 2: Scaling** | 6-18 months | 🚧 50,000 farmer onboarding <br> 🚧 e-NAM/UPI 123Pay integration <br> 🚧 3 rural bank partnerships |
-| **Phase 3: National Expansion** | 18-36 months| 📋 NICRA's 127 agro-climatic zones coverage <br> 📋 Aadhaar/UPI interoperability <br> 📋 1 million+ farmer target |
+| Hindi Query | English | Response |
+|---|---|---|
+| `मेरी फसल में कीड़े लग गए हैं` | My crop has pests | नीम तेल 5 मिली/लीटर, 3 दिन अंतराल |
+| `गेहूं के लिए कितना यूरिया डालें?` | How much urea for wheat? | 50 किलो/एकड़ |
+| `मेरा क्रेडिट स्कोर क्या है?` | What is my credit score? | Score + loan eligibility |
+| `आज टमाटर की कीमत?` | Today's tomato price? | ₹40/किलो (मंडी भोपाल) |
+
+### USSD Commands
+| Code | Action |
+|------|--------|
+| `*123*1#` | Pest control menu |
+| `*123*2#` | Loan eligibility check |
+
+---
+
+## ⚙️ Configuration (`config.py`)
+
+```python
+class Config:
+    TTS_MODEL = "tts_models/hi/indic-tts"
+    ASR_MODEL = "models/vosk-model-small-hi-0.22"
+    NODE_ADDRESS = "127.0.0.1:5000"      # Blockchain node
+    SOIL_THRESHOLDS = {
+        'nitrogen':   (30, 50),           # mg/kg
+        'phosphorus': (15, 40),
+        'potassium':  (20, 50)
+    }
+```
 
 ---
 
 ## 📊 Data Sources
 
-| Dataset               | Type        | Source                      | Use Case                     |
-| --------------------- | ----------- | --------------------------- | ---------------------------- |
-| ISRO Bhuvan Satellite | Public      | bhuvan.nrsc.gov.in          | Crop health scoring          |
-| Soil Health Cards     | Public      | soilhealth.dac.gov.in       | Fertilizer recommendations   |
-| e-NAM Transactions    | Public API  | enam.gov.in                 | Sales history verification   |
-| Farmer Voice Queries  | User-gen    | Field recordings            | NLP model training           |
+| Dataset | Source | Use Case |
+|---------|--------|----------|
+| NFHS-5 Factsheets | data.gov.in | Agricultural demographic context |
+| Rajya Sabha AU data | sansad.in | Policy reference |
+| Sample Queries | Field recordings (mock) | NLP testing |
+| Soil Samples | Synthetic | Soil analyzer testing |
 
 ---
 
 ## 🙏 Acknowledgments
 
-* **ISRO** for satellite data access through the Bhuvan API.
-* **AI4Bharat** for IndicTrans and other NLP tools.
+* **AI4Bharat** for Hindi NLP tools and IndicTTS support.
+* **Alphacephei (Vosk)** for lightweight offline Hindi ASR.
+* **ISRO Bhuvan** for satellite data API inspiration.
 * **The/Nudge Institute** for the Pragati AI for Impact Hackathon platform.
-* **F123** for supporting accessible technology solutions.
