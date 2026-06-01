@@ -1,0 +1,41 @@
+{
+    "fields": [
+        {
+            "id": "a",
+            "label": "Sl.No",
+            "type": "string"
+        },
+        {
+            "id": "b",
+            "label": "Type of Soil",
+            "type": "string"
+        },
+        {
+            "id": "c",
+            "label": "Areas in Tamil Nadu",
+            "type": "string"
+        }
+    ],
+    "data": [
+        [
+            "1",
+            "Red Loam",
+            "Parts of Kancheepuram, Cuddalore, Salem, Dharmapuri, Coimbatore,Tiruchirappalli,Thanjavur,Ramanathapuram, Madurai, Tirunelveli, Sivagangai, Thoothukudi, Virudhunagar, Dindigul and The Nilgiris Districts."
+        ],
+        [
+            "2",
+            "Laterite Soil",
+            "Parts of The Nilgiris District"
+        ],
+        [
+            "3",
+            "Black Soil",
+            "Parts of Kancheepuram, Cuddalore, Vellore, Thiruvannamalai, Salem, Dharmapuri, Madurai, Ramanathapuram, Tirunelveli, Sivagangai, The Nilgiris, Virudhunagar and Dindigul Districts."
+        ],
+        [
+            "4",
+            "Sandy Coastal alluviam",
+            "On the Coasts in the districts of Ramanathapuram, Thanjavur, Nagapattinam, Cuddalore, Kancheepuram, Kanyakumari and Thoothukudi"
+        ]
+    ]
+}
